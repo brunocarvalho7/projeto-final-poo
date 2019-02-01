@@ -6,10 +6,18 @@ public class ClientePessoaFisica extends Cliente {
 
 	private String nome;
 	private String cpf;
-	
-	public ClientePessoaFisica(String endereco, String[] telefones, String email, double rsLocado, String nome,
+
+	/**
+	 * 
+	 * @param endereco
+	 * @param telefones
+	 * @param email
+	 * @param nome
+	 * @param cpf
+	 */
+	public ClientePessoaFisica(String endereco, String[] telefones, String email, String nome,
 			String cpf) {
-		super(endereco, telefones, email, rsLocado);
+		super(endereco, telefones, email, 0);
 		this.nome = nome;
 		this.cpf = cpf;
 	}

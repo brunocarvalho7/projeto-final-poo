@@ -1,7 +1,7 @@
 package model;
 
-import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import enums.LocacaoStatus;
@@ -20,8 +20,8 @@ public class Locacao {
 	private LocacaoStatus status;
 	
 	public Locacao(LocalDate dataDevolucao, Cliente cliente, Funcionario atendente,
-			List<Carro> veiculos, double valorLocacao, LocacaoStatus status) {
-		this.idLocacao     = Locacao.ultId++;
+			List<Carro> veiculos) {
+		this.idLocacao     = ++Locacao.ultId;
 		this.dataLocacao   = LocalDate.now();
 		this.dataDevolucao = dataDevolucao;
 		this.cliente       = cliente;
@@ -94,9 +94,18 @@ public class Locacao {
 	private double calcularValorLocacao() {
 		double aux = 0;
 		
+		System.out.println("Qtd diarias: "+Period.between(getDataLocacao(), getDataDevolucao()).getDays());
+		
 		for(Carro c : veiculos)
-			aux += c.getValorDiaria() * (Duration.between(getDataLocacao(), getDataDevolucao()).toDays());
+			aux += c.getValorDiaria() * (Period.between(getDataLocacao(), getDataDevolucao()).getDays());
 		
 		return aux;
+	}
+
+	@Override
+	public String toString() {
+		return "[idLocacao:" + idLocacao + "\ndataLocacao:" + dataLocacao + "\ndataDevolucao:" + dataDevolucao
+				+ "\ncliente:" + cliente + "\natendente:" + atendente + "\nveiculos:" + veiculos + "\nvalorLocacao:"
+				+ String.format("%.2f", valorLocacao) + "\nstatus:" + status + "\n]";
 	}
 }

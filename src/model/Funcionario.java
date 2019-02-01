@@ -18,7 +18,7 @@ public class Funcionario extends Pessoa{
 
 	public Funcionario(String endereco, String[] telefones, String email, String nome, double salario,
 			Cargo cargo) {
-		super(Funcionario.seqID++, endereco, telefones, email);
+		super(++Funcionario.seqID, endereco, telefones, email);
 		this.nome = nome;
 		this.salario = salario;
 		this.cargo = cargo;

@@ -4,6 +4,8 @@ import enums.TipoAutomovel;
 
 public class Carro {
 
+	private static int seqId = 0;
+	
 	private int id;
 	private String modelo;
 	private String chassi;
@@ -16,7 +18,50 @@ public class Carro {
 	private double valorDiaria;
 	private TipoAutomovel tipo;
 	private boolean disponivel;
-
+	
+	public Carro() {
+		this.id = ++Carro.seqId;
+		this.disponivel = true;
+	}
+	
+	public Carro(int id) {
+		this.id = id;		
+	}
+	
+	public Carro(String modelo, String chassi, String placa, int ano, boolean arCondicionado,
+			boolean vidrosEletricos, boolean travasEletricas, boolean direcaoHidraulica, double valorDiaria,
+			TipoAutomovel tipo) {
+		this.id = ++Carro.seqId;
+		this.modelo = modelo;
+		this.chassi = chassi;
+		this.placa = placa;
+		this.ano = ano;
+		this.arCondicionado = arCondicionado;
+		this.vidrosEletricos = vidrosEletricos;
+		this.travasEletricas = travasEletricas;
+		this.direcaoHidraulica = direcaoHidraulica;
+		this.valorDiaria = valorDiaria;
+		this.tipo = tipo;
+		this.disponivel = true;
+	}
+	
+	public Carro(int id, String modelo, String chassi, String placa, int ano, boolean arCondicionado,
+			boolean vidrosEletricos, boolean travasEletricas, boolean direcaoHidraulica, double valorDiaria,
+			TipoAutomovel tipo) {
+		this.id = id;
+		this.modelo = modelo;
+		this.chassi = chassi;
+		this.placa = placa;
+		this.ano = ano;
+		this.arCondicionado = arCondicionado;
+		this.vidrosEletricos = vidrosEletricos;
+		this.travasEletricas = travasEletricas;
+		this.direcaoHidraulica = direcaoHidraulica;
+		this.valorDiaria = valorDiaria;
+		this.tipo = tipo;
+		this.disponivel = true;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -115,17 +160,34 @@ public class Carro {
 
 	@Override
 	public String toString() {
-		return "Código: " + id + "\n" + 
-	           "Modelo: " + modelo + "\n" +
-	           "Chassi: " + chassi + "\n" +
-	           "Placa: " + placa + "\n" +
-	           "Ano: " + ano + "\n" + 
-	           "Tipo: " + tipo + "\n" +
-	           "Ar-condicionado: " + (arCondicionado ? "Sim" : "Não") + "\n" +
-	           "Vidros Eletricos: " + (vidrosEletricos ? "Sim" : "Não") + "\n" +
-	           "Travas Elétricas" + (travasEletricas ? "Sim" : "Não") + "\n" +
-	           "Direção Hidraulica: " + (direcaoHidraulica ? "Sim" : "Não") + "\n" +
-	           "Valor da Diária: " + String.format("%.2f", valorDiaria) + 
-	           "Disponível: "  + (disponivel ? "Sim" : "Não");
+		return id + "|" + modelo + "|" + chassi + "|" + placa + "|" + ano + "|" + arCondicionado + "|" + vidrosEletricos
+				+ "|" + travasEletricas + "|" + direcaoHidraulica + "|" + valorDiaria + "|" + tipo + "|" + disponivel;
+	}
+	
+	public static Carro desserializarCarro(String[] s) {
+		try {
+			Carro.seqId = Integer.parseInt(s[0]);
+			Carro c = new Carro(Integer.parseInt(s[0]));
+			c.setModelo(s[1]);
+			c.setChassi(s[2]);
+			c.setPlaca(s[3]);
+			c.setAno(Integer.parseInt(s[4]));
+			c.setArCondicionado(Boolean.valueOf(s[5]));
+			c.setVidrosEletricos(Boolean.valueOf(s[6]));
+			c.setTravasEletricas(Boolean.valueOf(s[7]));
+			c.setDirecaoHidraulica(Boolean.valueOf(s[8]));
+			c.setValorDiaria(Double.parseDouble(s[9]));
+			c.setTipo(TipoAutomovel.valueOf(s[10]));
+			
+			if(s[11].equals("true"))
+				c.devolver();
+			else
+				c.alugar();
+		
+			return c;
+		} catch(Exception e) {
+			System.out.println("Ocorreu um problema ao serializar o seguinte carro: "+s);
+			return null;
+		}
 	}
 }
