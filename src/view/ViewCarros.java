@@ -35,7 +35,7 @@ public class ViewCarros extends JFrame {
 	}
  
 	public void prencherDadosTabela() {
-		carros = Repositorio.getInstance().buscarCarros();
+		carros = Repositorio.getInstance().buscarTodos();
 		
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		
@@ -59,12 +59,14 @@ public class ViewCarros extends JFrame {
 	}
 
 	private void removerCarroSelecionado(Carro c) {
-		int x = JOptionPane.showConfirmDialog(null, "Deseja realmente remover o carro "+c.getModelo()+" ?", "REMOVER CARRO", 0);
+		if(c != null) {
+			int x = JOptionPane.showConfirmDialog(null, "Deseja realmente remover o carro "+c.getModelo()+" ?", "REMOVER CARRO", 0);
 		
-		//Se o usuario tiver realmente confirmado...
-		if(x == 0) {
-			Repositorio.getInstance().removerCarro(c.getId());
-			prencherDadosTabela();
+			//Se o usuario tiver realmente confirmado...
+			if(x == 0) {
+				Repositorio.getInstance().remover(c.getId());
+				prencherDadosTabela();
+			}
 		}
 	}
 	
@@ -82,9 +84,12 @@ public class ViewCarros extends JFrame {
 	}
 
 	public Carro getCarroSelecionado() {
+		if(table.getSelectedRow() > -1) {
         Integer idCarro = Integer.parseInt((String) table.getModel().getValueAt(table.getSelectedRow(), 0));
     	
-    	return carros.get(idCarro);
+    		return carros.get(idCarro);
+		}
+		return null;
 	}
 	
 	public void initComponents() {

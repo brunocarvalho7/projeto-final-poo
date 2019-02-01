@@ -87,7 +87,7 @@ public class ViewCarroDetalhes extends JFrame {
 			
 			System.out.println("Depois: " + carro);
 			
-			Carro aux = Repositorio.getInstance().salvarCarro(carro);
+			Carro aux = Repositorio.getInstance().salvar(carro);
 			
 			if(aux != null) {
 				JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");

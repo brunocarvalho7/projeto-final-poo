@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import interfaces.IRepositorio;
 import model.Carro;
 
-public class Repositorio {
+public class Repositorio implements IRepositorio<Carro>{
 
 	private static Repositorio instance;
 	private Map<Integer, Carro> carros = new HashMap<>();
@@ -27,40 +28,45 @@ public class Repositorio {
 		return instance;
 	}
 
-	public Carro salvarCarro(Carro carro) {
-		carros.put(carro.getId(), carro);
+	@Override
+	public Carro salvar(Carro obj) {
+		carros.put(obj.getId(), obj);
 		gravarDadosTxt();
 		
-		return carros.get(carro.getId());
+		return carros.get(obj.getId());
 	}
 	
-	public Carro removerCarro(int idCarro) {
+	@Override
+	public Carro remover(int id) {
 		Carro aux = null;
 		
-		if(carros.containsKey(idCarro)) {
-			aux = carros.get(idCarro);
-			carros.remove(idCarro);
+		if(carros.containsKey(id)) {
+			aux = carros.get(id);
+			carros.remove(id);
 			gravarDadosTxt();
 		}
 		
 		return aux;
 	}
 
-	public List<Carro> buscarCarro(String modelo) {
+	@Override
+	public List<Carro> buscar(String chave) {
 		List<Carro> aux = new ArrayList<>();
 		
 		for(Carro c : carros.values()) {
-			if(c.getModelo().contains(modelo))
+			if(c.getModelo().contains(chave))
 				aux.add(c);
 		}
 		
 		return aux;
 	}
 	
-	public Map<Integer, Carro> buscarCarros(){
+	@Override
+	public Map<Integer, Carro> buscarTodos() {
 		return carros;
 	}
 
+	@Override
 	public boolean gravarDadosTxt() {
 		try {
 			PrintStream out = new PrintStream(new File("carros.txt"));
@@ -76,6 +82,7 @@ public class Repositorio {
 		return true;
 	}
 	
+	@Override
 	public boolean lerDadosTxt() {
 		carros.clear();
 		
