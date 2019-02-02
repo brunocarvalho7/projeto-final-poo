@@ -10,8 +10,8 @@ public abstract class Cliente extends Pessoa {
 		super();
 	}
 		
-	public Cliente(String endereco, String[] telefones, String email, double rsLocado) {
-		super(++Cliente.seqID, endereco, telefones, email);
+	public Cliente(String endereco, String telefone, String email, double rsLocado) {
+		super(++Cliente.seqID, endereco, telefone, email);
 		this.rsLocado = rsLocado;
 	}
 

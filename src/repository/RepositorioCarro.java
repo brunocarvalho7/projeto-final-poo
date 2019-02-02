@@ -12,18 +12,18 @@ import java.util.Scanner;
 import interfaces.IRepositorio;
 import model.Carro;
 
-public class Repositorio implements IRepositorio<Carro>{
+public class RepositorioCarro implements IRepositorio<Carro>{
 
-	private static Repositorio instance;
+	private static RepositorioCarro instance;
 	private Map<Integer, Carro> carros = new HashMap<>();
 	
-	private Repositorio() {
+	private RepositorioCarro() {
 		lerDadosTxt();
 	}
 	
-	public static Repositorio getInstance() {
+	public static RepositorioCarro getInstance() {
 		if(instance == null)
-			instance = new Repositorio();
+			instance = new RepositorioCarro();
 		
 		return instance;
 	}

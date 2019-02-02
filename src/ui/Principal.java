@@ -2,7 +2,7 @@ package ui;
 
 import java.awt.EventQueue;
 
-import view.ViewCarros;
+import view.ViewFuncionarios;
 
 public class Principal {
 
@@ -10,7 +10,7 @@ public class Principal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {					
-					ViewCarros frame = new ViewCarros();
+					ViewFuncionarios frame = new ViewFuncionarios();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 					
@@ -19,6 +19,7 @@ public class Principal {
 				}
 			}
 		});
+		
 	}
 
 }

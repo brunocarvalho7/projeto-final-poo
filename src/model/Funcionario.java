@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 import enums.Cargo;
 
 public class Funcionario extends Pessoa{
@@ -13,12 +11,16 @@ public class Funcionario extends Pessoa{
 	private Cargo cargo;
 
 	public Funcionario() {
-		super();
+		super(++Funcionario.seqID);
 	}
 
-	public Funcionario(String endereco, String[] telefones, String email, String nome, double salario,
+	public Funcionario(int id) {
+		super(id);
+	}
+	
+	public Funcionario(String endereco, String telefone, String email, String nome, double salario,
 			Cargo cargo) {
-		super(++Funcionario.seqID, endereco, telefones, email);
+		super(++Funcionario.seqID, endereco, telefone, email);
 		this.nome = nome;
 		this.salario = salario;
 		this.cargo = cargo;
@@ -50,12 +52,28 @@ public class Funcionario extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Cód.: " + getIdPessoa() + "\n"+
-			   "Nome:" + getNome() + "\n" +
-			   "Endereço: " + getEndereco() + "\n" +
-			   "Telefones: " + Arrays.toString(getTelefones()) + "\n" +
-			   "Email: " + getEmail() + "\n" +
-			   "Cargo: " + getCargo() + "\n" + 
-			   "Salário: " + String.format("%.2f", getSalario());
+		return getIdPessoa() + "|" + nome + "|" + salario + "|" + cargo  + "|" + getEndereco() + "|"
+				+ getTelefone() + "|" + getEmail();
+	}
+	
+	public static Funcionario desserializarFuncionario(String[] s) {
+		try {
+			Funcionario.seqID = Integer.parseInt(s[0]);
+			
+			Funcionario f = new Funcionario(Integer.parseInt(s[0]));
+			
+			f.setIdPessoa(Integer.parseInt(s[0]));
+			f.setNome(s[1]);
+			f.setSalario(Double.parseDouble(s[2]));
+			f.setCargo(Cargo.valueOf(s[3]));
+			f.setEndereco(s[4]);
+			f.setTelefone(s[5]);
+			f.setEmail(s[6]);
+			
+			return f;
+		} catch(Exception e) {
+			System.out.println("Ocorreu um problema ao serializar o seguinte funcionario: "+s);
+			return null;
+		}
 	}
 }

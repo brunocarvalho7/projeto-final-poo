@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import model.Carro;
-import repository.Repositorio;
+import repository.RepositorioCarro;
 
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
@@ -35,7 +35,7 @@ public class ViewCarros extends JFrame {
 	}
  
 	public void prencherDadosTabela() {
-		carros = Repositorio.getInstance().buscarTodos();
+		carros = RepositorioCarro.getInstance().buscarTodos();
 		
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		
@@ -64,7 +64,7 @@ public class ViewCarros extends JFrame {
 		
 			//Se o usuario tiver realmente confirmado...
 			if(x == 0) {
-				Repositorio.getInstance().remover(c.getId());
+				RepositorioCarro.getInstance().remover(c.getId());
 				prencherDadosTabela();
 			}
 		}

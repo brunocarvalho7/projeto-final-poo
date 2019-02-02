@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 public class ClientePessoaFisica extends Cliente {
 
 	private String nome;
@@ -15,9 +13,9 @@ public class ClientePessoaFisica extends Cliente {
 	 * @param nome
 	 * @param cpf
 	 */
-	public ClientePessoaFisica(String endereco, String[] telefones, String email, String nome,
+	public ClientePessoaFisica(String endereco, String telefone, String email, String nome,
 			String cpf) {
-		super(endereco, telefones, email, 0);
+		super(endereco, telefone, email, 0);
 		this.nome = nome;
 		this.cpf = cpf;
 	}
@@ -49,7 +47,7 @@ public class ClientePessoaFisica extends Cliente {
 			   "Nome:" + getNome() + "\n" +
 			   "CPF:" + getCpf() + "\n" +
 			   "Endereço: " + getEndereco() + "\n" +
-			   "Telefones: " + Arrays.toString(getTelefones()) + "\n" +
+			   "Telefone: " + getTelefone() + "\n" +
 			   "Email: " + getEmail() + "\n"; 
 	}
 }

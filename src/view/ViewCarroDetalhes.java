@@ -6,7 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import enums.TipoAutomovel;
 import model.Carro;
-import repository.Repositorio;
+import repository.RepositorioCarro;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -68,8 +68,6 @@ public class ViewCarroDetalhes extends JFrame {
 	
 	public void salvarInformacoes() {
 		if(validarCampos()) {
-			System.out.println("Antes:" + carro);
-			
 			if(carro == null)
 				carro = new Carro();
 			
@@ -85,9 +83,7 @@ public class ViewCarroDetalhes extends JFrame {
 			carro.setTravasEletricas(chckbxTravasEltricas.isSelected());
 			carro.setVidrosEletricos(chckbxVidrosEltricos.isSelected());
 			
-			System.out.println("Depois: " + carro);
-			
-			Carro aux = Repositorio.getInstance().salvar(carro);
+			Carro aux = RepositorioCarro.getInstance().salvar(carro);
 			
 			if(aux != null) {
 				JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");

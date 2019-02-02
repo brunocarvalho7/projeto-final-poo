@@ -1,16 +1,14 @@
 package model;
 
-import java.util.Arrays;
-
 public class ClientePessoaJuridica extends Cliente {
 
 	private String nomeFantasia;
 	private String razaoSocial;
 	private String cnpj;
 	
-	public ClientePessoaJuridica(String endereco, String[] telefones, String email, double rsLocado,
+	public ClientePessoaJuridica(String endereco, String telefone, String email, double rsLocado,
 			String nomeFantasia, String razaoSocial, String cnpj) {
-		super(endereco, telefones, email, rsLocado);
+		super(endereco, telefone, email, rsLocado);
 		this.nomeFantasia = nomeFantasia;
 		this.razaoSocial = razaoSocial;
 		this.cnpj = cnpj;
@@ -52,7 +50,7 @@ public class ClientePessoaJuridica extends Cliente {
 			   "Nome Fantasia:" + getNomeFantasia() + "\n" +				
 			   "CNPJ:" + getCnpj() + "\n" +
 			   "Endereço: " + getEndereco() + "\n" +
-			   "Telefones: " + Arrays.toString(getTelefones()) + "\n" +
+			   "Telefones: " + getTelefone() + "\n" +
 			   "Email: " + getEmail() + "\n"; 
 	}
 }
