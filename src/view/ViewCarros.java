@@ -152,5 +152,4 @@ public class ViewCarros extends JFrame {
 		btnRemoverCarroSelecionado.setBounds(482, 266, 115, 23);
 		getContentPane().add(btnRemoverCarroSelecionado);
 	}
-
 }

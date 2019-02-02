@@ -87,7 +87,7 @@ public class ViewFuncionarioDetalhes extends JFrame {
 			JOptionPane.showMessageDialog(null, "Informe um endereço válido!!");
 			txtEndereco.requestFocus();
 			return false;
-		}else if(txtTelefone.getText().trim().equals("") || txtTelefone.getText().trim().length() != 8) {
+		}else if(txtTelefone.getText().trim().equals("") || txtTelefone.getText().trim().length() < 8) {
 			JOptionPane.showMessageDialog(null, "Informe um telefone válido!!");
 			txtTelefone.requestFocus();
 			return false;

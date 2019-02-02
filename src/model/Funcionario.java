@@ -72,7 +72,7 @@ public class Funcionario extends Pessoa{
 			
 			return f;
 		} catch(Exception e) {
-			System.out.println("Ocorreu um problema ao serializar o seguinte funcionario: "+s);
+			System.out.println("Ocorreu um problema ao desserializar o seguinte funcionario: "+s);
 			return null;
 		}
 	}

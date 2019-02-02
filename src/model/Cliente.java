@@ -2,12 +2,16 @@ package model;
 
 public abstract class Cliente extends Pessoa {
 	
-	private static int seqID = 0;
+	public static int seqID = 0;
 	
 	private double rsLocado;
 
 	public Cliente() {
-		super();
+		super(++Cliente.seqID);
+	}
+	
+	public Cliente(int idPessoa) {
+		super(idPessoa);
 	}
 		
 	public Cliente(String endereco, String telefone, String email, double rsLocado) {
@@ -22,9 +26,8 @@ public abstract class Cliente extends Pessoa {
 	public void setRsLocado(double rsLocado) {
 		this.rsLocado = rsLocado;
 	}
-/**
- * VER SE É MELHOR OCLOCAR INTERFACE
- * @return
- */
+
 	public abstract int getMaxLocacoesSimultaneas();
+	
+	public abstract Cliente desserializarCliente(String[] s);
 }

@@ -186,7 +186,7 @@ public class Carro {
 		
 			return c;
 		} catch(Exception e) {
-			System.out.println("Ocorreu um problema ao serializar o seguinte carro: "+s);
+			System.out.println("Ocorreu um problema ao desserializar o seguinte carro: "+s);
 			return null;
 		}
 	}

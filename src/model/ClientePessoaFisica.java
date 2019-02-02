@@ -13,6 +13,15 @@ public class ClientePessoaFisica extends Cliente {
 	 * @param nome
 	 * @param cpf
 	 */
+	
+	public ClientePessoaFisica() {
+		super();
+	}
+	
+	public ClientePessoaFisica(int idPessoa) {
+		super(idPessoa);
+	}
+	
 	public ClientePessoaFisica(String endereco, String telefone, String email, String nome,
 			String cpf) {
 		super(endereco, telefone, email, 0);
@@ -35,19 +44,36 @@ public class ClientePessoaFisica extends Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	
 	@Override
 	public int getMaxLocacoesSimultaneas() {
-		return 3;
+		return 2;
 	}
 	
 	@Override
 	public String toString() {
-		return "Cód.: " + getIdPessoa() + "\n"+
-			   "Nome:" + getNome() + "\n" +
-			   "CPF:" + getCpf() + "\n" +
-			   "Endereço: " + getEndereco() + "\n" +
-			   "Telefone: " + getTelefone() + "\n" +
-			   "Email: " + getEmail() + "\n"; 
+		return "pf|" + getIdPessoa() + "|" +nome + "|" + cpf + "|" + getRsLocado() + "|" + getEndereco() + "|" + 
+				getTelefone() + "|" + getEmail();
+	}
+
+	@Override
+	public Cliente desserializarCliente(String[] s) {
+		try {
+			Cliente.seqID = Integer.parseInt(s[1]);
+			
+			ClientePessoaFisica c = new ClientePessoaFisica(Integer.parseInt(s[1]));
+			
+			c.setNome(s[2]);
+			c.setCpf(s[3]);
+			c.setRsLocado(Double.parseDouble(s[4]));
+			c.setEndereco(s[5]);
+			c.setTelefone(s[6]);
+			c.setEmail(s[7]);
+			
+			return c;
+		} catch(Exception e) {
+			System.out.println("Ocorreu um problema ao desserializar o seguinte funcionario: "+s);
+			return null;
+		}
 	}
 }
