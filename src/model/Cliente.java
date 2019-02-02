@@ -29,5 +29,7 @@ public abstract class Cliente extends Pessoa {
 
 	public abstract int getMaxLocacoesSimultaneas();
 	
+	public abstract String serializarCliente();
+	
 	public abstract Cliente desserializarCliente(String[] s);
 }

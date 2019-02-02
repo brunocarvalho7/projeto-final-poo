@@ -160,8 +160,16 @@ public class Carro {
 
 	@Override
 	public String toString() {
+		return modelo;
+	}
+
+	public boolean equals(Carro obj) {
+		return this.getId() == obj.getId();
+	}
+	
+	public String serializarCarro() {
 		return id + "|" + modelo + "|" + chassi + "|" + placa + "|" + ano + "|" + arCondicionado + "|" + vidrosEletricos
-				+ "|" + travasEletricas + "|" + direcaoHidraulica + "|" + valorDiaria + "|" + tipo + "|" + disponivel;
+			+ "|" + travasEletricas + "|" + direcaoHidraulica + "|" + valorDiaria + "|" + tipo + "|" + disponivel;
 	}
 	
 	public static Carro desserializarCarro(String[] s) {

@@ -30,6 +30,10 @@ public class RepositorioCliente implements IRepositorio<Cliente>{
 		return instance;
 	}
 	
+	public Cliente buscar(int idCliente) {
+		return clientes.get(idCliente);
+	}
+	
 	@Override
 	public Cliente salvar(Cliente obj) {
 		clientes.put(obj.getIdPessoa(), obj);
@@ -80,7 +84,7 @@ public class RepositorioCliente implements IRepositorio<Cliente>{
 			PrintStream out = new PrintStream(new File("clientes.txt"));
 			
 			for(Cliente f : clientes.values()) 
-				out.println(f);
+				out.println(f.serializarCliente());
 			
 			out.close();
 		} catch (FileNotFoundException e) {

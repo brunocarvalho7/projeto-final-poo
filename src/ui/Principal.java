@@ -2,7 +2,8 @@ package ui;
 
 import java.awt.EventQueue;
 
-import view.ViewClientes;
+import view.ViewLocacaoDetalhes;
+import view.ViewLocacoes;
 
 public class Principal {
 
@@ -10,7 +11,7 @@ public class Principal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {					
-					ViewClientes frame = new ViewClientes();
+					ViewLocacoes frame = new ViewLocacoes();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 					
@@ -20,6 +21,5 @@ public class Principal {
 			}
 		});
 	}
-
 }
 

@@ -49,12 +49,16 @@ public class Funcionario extends Pessoa{
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
-
+	
 	@Override
 	public String toString() {
+		return nome;
+	}
+	
+	public String serializarCliente(){
 		return getIdPessoa() + "|" + nome + "|" + salario + "|" + cargo  + "|" + getEndereco() + "|"
 				+ getTelefone() + "|" + getEmail();
-	}
+	}	
 	
 	public static Funcionario desserializarFuncionario(String[] s) {
 		try {

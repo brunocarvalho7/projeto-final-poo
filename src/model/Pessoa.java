@@ -53,6 +53,10 @@ public abstract class Pessoa {
 		this.email = email;
 	}
 
+	public boolean equals(Pessoa obj) {
+		return this.getIdPessoa() == obj.getIdPessoa();
+	}
+	
 	@Override
 	public String toString() {
 		return "Cód.: " + idPessoa + "\n"+

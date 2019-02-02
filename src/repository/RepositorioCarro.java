@@ -50,6 +50,11 @@ public class RepositorioCarro implements IRepositorio<Carro>{
 	}
 
 	@Override
+	public Carro buscar(int id) {
+		return carros.get(id);
+	}
+	
+	@Override
 	public List<Carro> buscar(String chave) {
 		List<Carro> aux = new ArrayList<>();
 		
@@ -72,7 +77,7 @@ public class RepositorioCarro implements IRepositorio<Carro>{
 			PrintStream out = new PrintStream(new File("carros.txt"));
 			
 			for(Carro c : carros.values()) 
-				out.println(c);
+				out.println(c.serializarCarro());
 			
 			out.close();
 		} catch (FileNotFoundException e) {

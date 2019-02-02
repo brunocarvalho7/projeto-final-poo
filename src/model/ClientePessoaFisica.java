@@ -1,6 +1,6 @@
 package model;
 
-public class ClientePessoaFisica extends Cliente {
+public class ClientePessoaFisica extends Cliente{
 
 	private String nome;
 	private String cpf;
@@ -52,10 +52,15 @@ public class ClientePessoaFisica extends Cliente {
 	
 	@Override
 	public String toString() {
+		return nome;
+	}
+
+	@Override
+	public String serializarCliente() {
 		return "pf|" + getIdPessoa() + "|" +nome + "|" + cpf + "|" + getRsLocado() + "|" + getEndereco() + "|" + 
 				getTelefone() + "|" + getEmail();
 	}
-
+	
 	@Override
 	public Cliente desserializarCliente(String[] s) {
 		try {

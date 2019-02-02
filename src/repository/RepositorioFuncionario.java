@@ -48,6 +48,11 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 		
 		return aux;
 	}
+	
+	@Override
+	public Funcionario buscar(int id) {
+		return funcionarios.get(id);
+	}
 
 	@Override
 	public List<Funcionario> buscar(String chave) {
@@ -72,7 +77,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 			PrintStream out = new PrintStream(new File("funcionarios.txt"));
 			
 			for(Funcionario f : funcionarios.values()) 
-				out.println(f);
+				out.println(f.serializarCliente());
 			
 			out.close();
 		} catch (FileNotFoundException e) {
