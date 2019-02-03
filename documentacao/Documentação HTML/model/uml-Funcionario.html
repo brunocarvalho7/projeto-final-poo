@@ -1,0 +1,61 @@
+<html><head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+Funcionario</title></head><body bgcolor=#ffffff text=#000000vlink=#330000 alink=#330044 link=#0000aa>
+<h2>Funcionario</h2>
+<p><a href="../Diagrama de Classes.html">Diagrama de Classes</a></p><p></p><table width=100% cellspacing=0 cellpadding=0>
+<tr><td width=32% valign=top>
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#92ff7d><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/uml-Pessoa.html>Pessoa</a>
+</td></tr><tr><td>
+-<a href=../model/Pessoa.html#idPessoa>idPessoa</a> :int<br>
+-<a href=../model/Pessoa.html#endereco>endereco</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/Pessoa.html#telefone>telefone</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/Pessoa.html#email>email</a> :<a href=../java/lang/uml-String.html>String</a><br>
+</td></tr><tr><td>
++<a href=../model/Pessoa.html#Pessoa()>Pessoa</a>()<br>
++<a href=../model/Pessoa.html#Pessoa(int)>Pessoa</a>(int idPessoa)<br>
++<a href=../model/Pessoa.html#Pessoa(int,java.lang.String,java.lang.String,java.lang.String)>Pessoa</a>(int idPessoa, <a href=../java/lang/uml-String.html>String</a> endereco, <a href=../java/lang/uml-String.html>String</a> telefone, <a href=../java/lang/uml-String.html>String</a> email)<br>
++<a href=../model/Pessoa.html#getIdPessoa()>getIdPessoa</a>() :int<br>
++<a href=../model/Pessoa.html#setIdPessoa(int)>setIdPessoa</a>(int idPessoa) :void<br>
++<a href=../model/Pessoa.html#getEndereco()>getEndereco</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Pessoa.html#setEndereco(java.lang.String)>setEndereco</a>(<a href=../java/lang/uml-String.html>String</a> endereco) :void<br>
++<a href=../model/Pessoa.html#getTelefone()>getTelefone</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Pessoa.html#setTelefone(java.lang.String)>setTelefone</a>(<a href=../java/lang/uml-String.html>String</a> telefone) :void<br>
++<a href=../model/Pessoa.html#getEmail()>getEmail</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Pessoa.html#setEmail(java.lang.String)>setEmail</a>(<a href=../java/lang/uml-String.html>String</a> email) :void<br>
++<a href=../model/Pessoa.html#equals(java.lang.Object)>equals</a>(<a href=../java/lang/uml-Object.html>Object</a> obj) :boolean<br>
++<a href=../model/Pessoa.html#toString()>toString</a>() :<a href=../java/lang/uml-String.html>String</a><br>
+</td></tr></table></td></tr>
+</table>
+</td><td width=12 align=center valign=top>
+<img src=../images/ext.gif>
+</td><td width=32% valign=top align=center>
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#7dfff1><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/Funcionario.html>Funcionario</a>
+</td></tr><tr><td>
+-<a href=../model/Funcionario.html#cargo>cargo</a> :<a href=../enums/uml-Cargo.html>Cargo</a><br>
+<u>-<a href=../model/Funcionario.html#seqID>seqID</a> :int</u><br>
+-<a href=../model/Funcionario.html#nome>nome</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/Funcionario.html#salario>salario</a> :double<br>
+-<a href=../model/Funcionario.html#cargo>cargo</a> :<a href=../enums/uml-Cargo.html>Cargo</a><br>
+</td></tr><tr><td>
++<a href=../model/Funcionario.html#Funcionario()>Funcionario</a>()<br>
++<a href=../model/Funcionario.html#Funcionario(int)>Funcionario</a>(int id)<br>
++<a href=../model/Funcionario.html#Funcionario(java.lang.String,java.lang.String,short)>Funcionario</a>(<a href=../java/lang/uml-String.html>String</a> endereco, <a href=../java/lang/uml-String.html>String</a> telefone, short CAMPOS_RESTANTES)<br>
++<a href=../model/Funcionario.html#getNome()>getNome</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Funcionario.html#setNome(java.lang.String)>setNome</a>(<a href=../java/lang/uml-String.html>String</a> nome) :void<br>
++<a href=../model/Funcionario.html#getSalario()>getSalario</a>() :double<br>
++<a href=../model/Funcionario.html#setSalario(double)>setSalario</a>(double salario) :void<br>
++<a href=../model/Funcionario.html#getCargo()>getCargo</a>() :<a href=../enums/uml-Cargo.html>Cargo</a><br>
++<a href=../model/Funcionario.html#setCargo(enums.Cargo)>setCargo</a>(<a href=../enums/uml-Cargo.html>Cargo</a> cargo) :void<br>
++<a href=../model/Funcionario.html#toString()>toString</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Funcionario.html#serializarCliente()>serializarCliente</a>() :<a href=../java/lang/uml-String.html>String</a><br>
+<u>+<a href=../model/Funcionario.html#desserializarFuncionario(java.lang.String[])>desserializarFuncionario</a>(<a href=../java/lang/uml-String.html>String</a>[] s) :<a href=../model/uml-Funcionario.html>Funcionario</a></u><br>
+</td></tr></table></td></tr>
+</table>
+</td><td width=12 align=center valign=top>
+</td>
+<td width=32% valign=top>
+</td></tr>
+</table></body></html>

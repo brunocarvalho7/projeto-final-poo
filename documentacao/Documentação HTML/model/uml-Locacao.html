@@ -1,0 +1,52 @@
+<html><head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+Locacao</title></head><body bgcolor=#ffffff text=#000000vlink=#330000 alink=#330044 link=#0000aa>
+<h2>Locacao</h2>
+<p><a href="../Diagrama de Classes.html">Diagrama de Classes</a></p><p></p><table width=100% cellspacing=0 cellpadding=0>
+<tr><td width=32% valign=top>
+</td><td width=12 align=center valign=top>
+</td><td width=32% valign=top align=center>
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#7dfff1><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/Locacao.html>Locacao</a>
+</td></tr><tr><td>
+-<a href=../model/Locacao.html#dataLocacao>dataLocacao</a> :<a href=../java/time/uml-LocalDate.html>LocalDate</a><br>
+-<a href=../model/Locacao.html#dataDevolucao>dataDevolucao</a> :<a href=../java/time/uml-LocalDate.html>LocalDate</a><br>
+<u>-<a href=../model/Locacao.html#seqID>seqID</a> :int</u><br>
+-<a href=../model/Locacao.html#idLocacao>idLocacao</a> :int<br>
+-<a href=../model/Locacao.html#valorLocacao>valorLocacao</a> :double<br>
+-<a href=../model/Locacao.html#cliente>cliente</a> :<a href=../model/uml-Cliente.html>Cliente</a><br>
+-<a href=../model/Locacao.html#atendente>atendente</a> :<a href=../model/uml-Funcionario.html>Funcionario</a><br>
+-<a href=../model/Locacao.html#status>status</a> :<a href=../enums/uml-LocacaoStatus.html>LocacaoStatus</a><br>
+-<a href=../model/Locacao.html#veiculos>veiculos</a> :<a href=../java/util/uml-List.html>List</a>&lt;Carro&gt;<br>
+</td></tr><tr><td>
++<a href=../model/Locacao.html#Locacao()>Locacao</a>()<br>
++<a href=../model/Locacao.html#Locacao(int)>Locacao</a>(int idLocacao)<br>
++<a href=../model/Locacao.html#Locacao(java.time.LocalDate,model.Cliente,model.Funcionario,)>Locacao</a>(<a href=../java/time/uml-LocalDate.html>LocalDate</a> dataDevolucao, <a href=../model/uml-Cliente.html>Cliente</a> cliente, <a href=../model/uml-Funcionario.html>Funcionario</a> atendente, <a href=../java/util/uml-List.html>List</a>&lt;Carro&gt; veiculos)<br>
++<a href=../model/Locacao.html#getIdLocacao()>getIdLocacao</a>() :int<br>
++<a href=../model/Locacao.html#getDataLocacao()>getDataLocacao</a>() :<a href=../java/time/uml-LocalDate.html>LocalDate</a><br>
++<a href=../model/Locacao.html#setDataLocacao(java.time.LocalDate)>setDataLocacao</a>(<a href=../java/time/uml-LocalDate.html>LocalDate</a> dataLocacao) :void<br>
++<a href=../model/Locacao.html#getDataDevolucao()>getDataDevolucao</a>() :<a href=../java/time/uml-LocalDate.html>LocalDate</a><br>
++<a href=../model/Locacao.html#setDataDevolucao(java.time.LocalDate)>setDataDevolucao</a>(<a href=../java/time/uml-LocalDate.html>LocalDate</a> dataDevolucao) :void<br>
++<a href=../model/Locacao.html#getCliente()>getCliente</a>() :<a href=../model/uml-Cliente.html>Cliente</a><br>
++<a href=../model/Locacao.html#setCliente(model.Cliente)>setCliente</a>(<a href=../model/uml-Cliente.html>Cliente</a> cliente) :void<br>
++<a href=../model/Locacao.html#getAtendente()>getAtendente</a>() :<a href=../model/uml-Funcionario.html>Funcionario</a><br>
++<a href=../model/Locacao.html#setAtendente(model.Funcionario)>setAtendente</a>(<a href=../model/uml-Funcionario.html>Funcionario</a> atendente) :void<br>
++<a href=../model/Locacao.html#getVeiculos()>getVeiculos</a>() :<a href=../java/util/uml-List.html>List</a>&lt;Carro&gt;<br>
++<a href=../model/Locacao.html#setVeiculos()>setVeiculos</a>(<a href=../java/util/uml-List.html>List</a>&lt;Carro&gt; veiculos) :void<br>
++<a href=../model/Locacao.html#getValorLocacao()>getValorLocacao</a>() :double<br>
++<a href=../model/Locacao.html#setValorLocacao(double)>setValorLocacao</a>(double valorLocacao) :void<br>
++<a href=../model/Locacao.html#getStatus()>getStatus</a>() :<a href=../enums/uml-LocacaoStatus.html>LocacaoStatus</a><br>
++<a href=../model/Locacao.html#setStatus(enums.LocacaoStatus)>setStatus</a>(<a href=../enums/uml-LocacaoStatus.html>LocacaoStatus</a> status) :void<br>
++<a href=../model/Locacao.html#calcularValorLocacao()>calcularValorLocacao</a>() :void<br>
++<a href=../model/Locacao.html#equals(model.Locacao)>equals</a>(<a href=../model/uml-Locacao.html>Locacao</a> obj) :boolean<br>
++<a href=../model/Locacao.html#toString()>toString</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Locacao.html#serializarCliente()>serializarCliente</a>() :<a href=../java/lang/uml-String.html>String</a><br>
+<u>+<a href=../model/Locacao.html#desserializarLocacao(java.lang.String[])>desserializarLocacao</a>(<a href=../java/lang/uml-String.html>String</a>[] s) :<a href=../model/uml-Locacao.html>Locacao</a></u><br>
+</td></tr></table></td></tr>
+</table>
+</td><td width=12 align=center valign=top>
+</td>
+<td width=32% valign=top>
+</td></tr>
+</table></body></html>

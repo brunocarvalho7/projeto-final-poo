@@ -1,0 +1,96 @@
+<html><head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+Cliente</title></head><body bgcolor=#ffffff text=#000000vlink=#330000 alink=#330044 link=#0000aa>
+<h2>Cliente</h2>
+<p><a href="../Diagrama de Classes.html">Diagrama de Classes</a></p><p></p><table width=100% cellspacing=0 cellpadding=0>
+<tr><td width=32% valign=top>
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#92ff7d><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/uml-Pessoa.html>Pessoa</a>
+</td></tr><tr><td>
+-<a href=../model/Pessoa.html#idPessoa>idPessoa</a> :int<br>
+-<a href=../model/Pessoa.html#endereco>endereco</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/Pessoa.html#telefone>telefone</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/Pessoa.html#email>email</a> :<a href=../java/lang/uml-String.html>String</a><br>
+</td></tr><tr><td>
++<a href=../model/Pessoa.html#Pessoa()>Pessoa</a>()<br>
++<a href=../model/Pessoa.html#Pessoa(int)>Pessoa</a>(int idPessoa)<br>
++<a href=../model/Pessoa.html#Pessoa(int,java.lang.String,java.lang.String,java.lang.String)>Pessoa</a>(int idPessoa, <a href=../java/lang/uml-String.html>String</a> endereco, <a href=../java/lang/uml-String.html>String</a> telefone, <a href=../java/lang/uml-String.html>String</a> email)<br>
++<a href=../model/Pessoa.html#getIdPessoa()>getIdPessoa</a>() :int<br>
++<a href=../model/Pessoa.html#setIdPessoa(int)>setIdPessoa</a>(int idPessoa) :void<br>
++<a href=../model/Pessoa.html#getEndereco()>getEndereco</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Pessoa.html#setEndereco(java.lang.String)>setEndereco</a>(<a href=../java/lang/uml-String.html>String</a> endereco) :void<br>
++<a href=../model/Pessoa.html#getTelefone()>getTelefone</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Pessoa.html#setTelefone(java.lang.String)>setTelefone</a>(<a href=../java/lang/uml-String.html>String</a> telefone) :void<br>
++<a href=../model/Pessoa.html#getEmail()>getEmail</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Pessoa.html#setEmail(java.lang.String)>setEmail</a>(<a href=../java/lang/uml-String.html>String</a> email) :void<br>
++<a href=../model/Pessoa.html#equals(java.lang.Object)>equals</a>(<a href=../java/lang/uml-Object.html>Object</a> obj) :boolean<br>
++<a href=../model/Pessoa.html#toString()>toString</a>() :<a href=../java/lang/uml-String.html>String</a><br>
+</td></tr></table></td></tr>
+</table>
+</td><td width=12 align=center valign=top>
+<img src=../images/ext.gif>
+</td><td width=32% valign=top align=center>
+<table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#92ff7d><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/Cliente.html>Cliente</a>
+</td></tr><tr><td>
+<u>+<a href=../model/Cliente.html#seqID>seqID</a> :int</u><br>
+-<a href=../model/Cliente.html#rsLocado>rsLocado</a> :double<br>
+</td></tr><tr><td>
++<a href=../model/Cliente.html#Cliente()>Cliente</a>()<br>
++<a href=../model/Cliente.html#Cliente(int)>Cliente</a>(int idPessoa)<br>
++<a href=../model/Cliente.html#Cliente(java.lang.String,java.lang.String,java.lang.String,double)>Cliente</a>(<a href=../java/lang/uml-String.html>String</a> endereco, <a href=../java/lang/uml-String.html>String</a> telefone, <a href=../java/lang/uml-String.html>String</a> email, double rsLocado)<br>
++<a href=../model/Cliente.html#getRsLocado()>getRsLocado</a>() :double<br>
++<a href=../model/Cliente.html#setRsLocado(double)>setRsLocado</a>(double rsLocado) :void<br>
++<a href=../model/Cliente.html#equals(java.lang.Object)>equals</a>(<a href=../java/lang/uml-Object.html>Object</a> obj) :boolean<br>
++<a href=../model/Cliente.html#getMaxLocacoesSimultaneas()>getMaxLocacoesSimultaneas</a>() :int<br>
++<a href=../model/Cliente.html#serializarCliente()>serializarCliente</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/Cliente.html#desserializarCliente(java.lang.String[])>desserializarCliente</a>(<a href=../java/lang/uml-String.html>String</a>[] s) :<a href=../model/uml-Cliente.html>Cliente</a><br>
+</td></tr></table></td></tr>
+</table>
+</td><td width=12 align=center valign=top>
+<img src=../images/ext.gif
+</td>
+<td width=32% valign=top>
+<table border=1 width=100% cellpadding=0 cellspacing=3><tr><td bgcolor=#7dfff1><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/uml-ClientePessoaJuridica.html>ClientePessoaJuridica</a>
+</td></tr><tr><td>
+-<a href=../model/ClientePessoaJuridica.html#nomeFantasia>nomeFantasia</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/ClientePessoaJuridica.html#razaoSocial>razaoSocial</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/ClientePessoaJuridica.html#cnpj>cnpj</a> :<a href=../java/lang/uml-String.html>String</a><br>
+</td></tr><tr><td>
++<a href=../model/ClientePessoaJuridica.html#ClientePessoaJuridica()>ClientePessoaJuridica</a>()<br>
++<a href=../model/ClientePessoaJuridica.html#ClientePessoaJuridica(int)>ClientePessoaJuridica</a>(int idPessoa)<br>
++<a href=../model/ClientePessoaJuridica.html#ClientePessoaJuridica(java.lang.String,short)>ClientePessoaJuridica</a>(<a href=../java/lang/uml-String.html>String</a> endereco, short CAMPOS_RESTANTES)<br>
++<a href=../model/ClientePessoaJuridica.html#getNomeFantasia()>getNomeFantasia</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaJuridica.html#setNomeFantasia(java.lang.String)>setNomeFantasia</a>(<a href=../java/lang/uml-String.html>String</a> nomeFantasia) :void<br>
++<a href=../model/ClientePessoaJuridica.html#getRazaoSocial()>getRazaoSocial</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaJuridica.html#setRazaoSocial(java.lang.String)>setRazaoSocial</a>(<a href=../java/lang/uml-String.html>String</a> razaoSocial) :void<br>
++<a href=../model/ClientePessoaJuridica.html#getCnpj()>getCnpj</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaJuridica.html#setCnpj(java.lang.String)>setCnpj</a>(<a href=../java/lang/uml-String.html>String</a> cnpj) :void<br>
++<a href=../model/ClientePessoaJuridica.html#getMaxLocacoesSimultaneas()>getMaxLocacoesSimultaneas</a>() :int<br>
++<a href=../model/ClientePessoaJuridica.html#toString()>toString</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaJuridica.html#serializarCliente()>serializarCliente</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaJuridica.html#desserializarCliente(java.lang.String[])>desserializarCliente</a>(<a href=../java/lang/uml-String.html>String</a>[] s) :<a href=../model/uml-Cliente.html>Cliente</a><br>
+</td></tr></table></td></tr>
+<tr><td bgcolor=#7dfff1><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
+model. <a href=../model/uml-ClientePessoaFisica.html>ClientePessoaFisica</a>
+</td></tr><tr><td>
+-<a href=../model/ClientePessoaFisica.html#nome>nome</a> :<a href=../java/lang/uml-String.html>String</a><br>
+-<a href=../model/ClientePessoaFisica.html#cpf>cpf</a> :<a href=../java/lang/uml-String.html>String</a><br>
+</td></tr><tr><td>
++<a href=../model/ClientePessoaFisica.html#ClientePessoaFisica()>ClientePessoaFisica</a>()<br>
++<a href=../model/ClientePessoaFisica.html#ClientePessoaFisica(int)>ClientePessoaFisica</a>(int idPessoa)<br>
++<a href=../model/ClientePessoaFisica.html#ClientePessoaFisica(java.lang.String,short)>ClientePessoaFisica</a>(<a href=../java/lang/uml-String.html>String</a> endereco, short CAMPOS_RESTANTES)<br>
++<a href=../model/ClientePessoaFisica.html#getNome()>getNome</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaFisica.html#setNome(java.lang.String)>setNome</a>(<a href=../java/lang/uml-String.html>String</a> nome) :void<br>
++<a href=../model/ClientePessoaFisica.html#getCpf()>getCpf</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaFisica.html#setCpf(java.lang.String)>setCpf</a>(<a href=../java/lang/uml-String.html>String</a> cpf) :void<br>
++<a href=../model/ClientePessoaFisica.html#getMaxLocacoesSimultaneas()>getMaxLocacoesSimultaneas</a>() :int<br>
++<a href=../model/ClientePessoaFisica.html#toString()>toString</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaFisica.html#serializarCliente()>serializarCliente</a>() :<a href=../java/lang/uml-String.html>String</a><br>
++<a href=../model/ClientePessoaFisica.html#desserializarCliente(java.lang.String[])>desserializarCliente</a>(<a href=../java/lang/uml-String.html>String</a>[] s) :<a href=../model/uml-Cliente.html>Cliente</a><br>
+</td></tr></table></td></tr>
+</table>
+</td></tr>
+</table></body></html>
