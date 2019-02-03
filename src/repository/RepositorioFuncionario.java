@@ -3,6 +3,8 @@ package repository;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +20,9 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 	private Map<Integer, Funcionario> funcionarios = new HashMap<>();
 	
 	private RepositorioFuncionario() {
-		lerDadosTxt();
+		if(Files.exists(Paths.get("database/funcionarios.txt"))){
+			lerDadosTxt();
+		}
 	}
 	
 	public static RepositorioFuncionario getInstance() {
@@ -74,7 +78,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 	@Override
 	public boolean gravarDadosTxt() {
 		try {
-			PrintStream out = new PrintStream(new File("funcionarios.txt"));
+			PrintStream out = new PrintStream(new File("database/funcionarios.txt"));
 			
 			for(Funcionario f : funcionarios.values()) 
 				out.println(f.serializarCliente());
@@ -92,7 +96,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 		funcionarios.clear();
 		
 		try {
-			Scanner dados = new Scanner(new File("funcionarios.txt"));
+			Scanner dados = new Scanner(new File("database/funcionarios.txt"));
 			while(dados.hasNext()) {
 				String[] s = dados.nextLine().split("\\|");
 				
