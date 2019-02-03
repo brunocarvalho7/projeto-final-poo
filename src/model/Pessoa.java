@@ -53,8 +53,9 @@ public abstract class Pessoa {
 		this.email = email;
 	}
 
-	public boolean equals(Pessoa obj) {
-		return this.getIdPessoa() == obj.getIdPessoa();
+	@Override
+	public boolean equals(Object obj) {
+		return this.getIdPessoa() == ((Pessoa)obj).getIdPessoa();
 	}
 	
 	@Override

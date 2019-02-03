@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -32,7 +33,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
-import enums.Cargo;
+import enums.LocacaoStatus;
 import model.Carro;
 import model.Cliente;
 import model.Funcionario;
@@ -42,8 +43,8 @@ import repository.RepositorioCliente;
 import repository.RepositorioFuncionario;
 import repository.RepositorioLocacao;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class ViewLocacaoDetalhes extends JFrame {
 
@@ -56,22 +57,18 @@ public class ViewLocacaoDetalhes extends JFrame {
 	private JComboBox<Carro> comboVeiculo;
 	private JTextField txtDataLocacao;
 	private JFormattedTextField txtDataDevolucao;
-	private List<Carro> veiculos = new ArrayList<>();
-	
-	private Locacao locacao;
+	private JButton btnInserir;
+	private JButton btnRemover;
+	private JButton btnSalvarLocacao;
 	private JTable tableVeiculo;
-
+	
+	private List<Carro> veiculos = new ArrayList<>();
+	private Locacao locacao;
+	
 	public ViewLocacaoDetalhes(Locacao locacao) {
 		this.locacao = locacao;
 		
 		initComponents();
-		
-		if(locacao != null)
-			prencherDadosFormulario();
-		else {
-			txtDataLocacao.setText(LocalDate.now().toString());
-			txtDataDevolucao.setText(LocalDate.now().toString());			
-		}
 		
 		for(Cliente c : RepositorioCliente.getInstance().buscarTodos().values()) 
 			comboCliente.addItem(c);
@@ -82,7 +79,14 @@ public class ViewLocacaoDetalhes extends JFrame {
 		for(Carro carro : RepositorioCarro.getInstance().buscarTodos().values())
 			if(carro.isDisponivel())
 				comboVeiculo.addItem(carro);
-
+		
+		if(locacao != null) {
+			verificarPermissaoEdicao();
+			prencherDadosFormulario();
+		}else {
+			txtDataLocacao.setText(LocalDate.now().toString());
+			txtDataDevolucao.setText(LocalDate.now().toString());			
+		}
 	}
 	
 	public void adicionarVeiculo() {
@@ -106,6 +110,8 @@ public class ViewLocacaoDetalhes extends JFrame {
 			//*********** Remover item adicionado do combobox de veiculos
 			comboVeiculo.removeItemAt(comboVeiculo.getSelectedIndex());
 			//===========================================================
+	
+			calcularValorLocacao();
 			
 			JOptionPane.showMessageDialog(null, "Veiculo adicionado com sucesso");
 		}	
@@ -120,6 +126,10 @@ public class ViewLocacaoDetalhes extends JFrame {
 
 			comboVeiculo.addItem(RepositorioCarro.getInstance().buscar(idVeiculo));
 			((DefaultTableModel) tableVeiculo.getModel()).removeRow(tableVeiculo.getSelectedRow());
+	
+			RepositorioCarro.getInstance().liberarCarro(idVeiculo);
+			
+			calcularValorLocacao();
 			
 			JOptionPane.showMessageDialog(null, "Veiculo removido com sucesso!!");
 		}
@@ -135,7 +145,10 @@ public class ViewLocacaoDetalhes extends JFrame {
 			locacao.setCliente((Cliente) comboCliente.getSelectedItem());
 			locacao.setAtendente((Funcionario) comboAtendente.getSelectedItem());
 			locacao.setVeiculos(veiculos);
-			locacao.setValorLocacao(Double.parseDouble(txtTotal.getText()));
+			locacao.setValorLocacao(Double.parseDouble(txtTotal.getText().replace(",", ".")));
+			
+			for(Carro c : veiculos)
+				RepositorioCarro.getInstance().alugarCarro(c.getId());
 			
 			Locacao aux = RepositorioLocacao.getInstance().salvar(locacao);
 			
@@ -185,7 +198,7 @@ public class ViewLocacaoDetalhes extends JFrame {
 			return false;
 		}else if(tableVeiculo.getRowCount() == 0) {
 			JOptionPane.showMessageDialog(null, "Informe um veiculo a ser locado!!");
-			comboAtendente.requestFocus();
+			comboVeiculo	.requestFocus();
 			return false;
 		}
 		
@@ -273,6 +286,18 @@ public class ViewLocacaoDetalhes extends JFrame {
 		contentPane.add(lblDataDevolucao, gbc_lblDataDevolucao);
 		
 		txtDataDevolucao = new JFormattedTextField();
+		txtDataDevolucao.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(validarDataDevolucao())
+					calcularValorLocacao();
+				else {
+					JOptionPane.showMessageDialog(null, "Informe uma data de devolução válida");
+					txtDataDevolucao.requestFocus();
+				}
+			}
+		});
+
 		txtDataDevolucao.setToolTipText("Digite uma data de devolu\u00E7\u00E3o no formato YYYY-MM-DD");
 		GridBagConstraints gbc_txtDataDevolucao = new GridBagConstraints();
 		gbc_txtDataDevolucao.insets = new Insets(0, 0, 5, 0);
@@ -398,7 +423,7 @@ public class ViewLocacaoDetalhes extends JFrame {
 		tableVeiculo.getColumnModel().getColumn(0).setPreferredWidth(30);
 		tableVeiculo.getColumnModel().getColumn(1).setPreferredWidth(150);
 		
-		JButton btnInserir = new JButton("Inserir");
+		btnInserir = new JButton("Inserir");
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				adicionarVeiculo();
@@ -411,7 +436,7 @@ public class ViewLocacaoDetalhes extends JFrame {
 		gbc_btnInserir.gridy = 9;
 		contentPane.add(btnInserir, gbc_btnInserir);
 		
-		JButton btnRemover = new JButton("Remover");
+		btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removerVeiculo();
@@ -461,7 +486,7 @@ public class ViewLocacaoDetalhes extends JFrame {
 			gbc_separator_1.gridy = 12;
 			contentPane.add(separator_1, gbc_separator_1);
 			
-			JButton btnSalvarLocacao = new JButton("Salvar Loca\u00E7\u00E3o");
+			btnSalvarLocacao = new JButton("Salvar Loca\u00E7\u00E3o");
 			btnSalvarLocacao.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					salvarInformacoes();
@@ -494,14 +519,43 @@ public class ViewLocacaoDetalhes extends JFrame {
 	
 	private boolean validarDataDevolucao() {
 		try {
-			LocalDate dataLocacao = LocalDate.parse(txtDataLocacao.getSelectedText());
-			LocalDate dataDevolucao = LocalDate.parse(txtDataDevolucao.getSelectedText());
-			if(dataDevolucao.isAfter(dataLocacao))
-				return true;
-			else
-				return false;
+			LocalDate dataLocacao = LocalDate.parse(txtDataLocacao.getText());
+			LocalDate dataDevolucao = LocalDate.parse(txtDataDevolucao.getText());
+
+			return dataDevolucao.isAfter(dataLocacao) || dataDevolucao.isEqual(dataLocacao);
 		} catch(Exception e) {
 			return false;
+		}
+	}
+	
+	private void calcularValorLocacao() {
+		double aux = 0;
+
+		if(validarDataDevolucao()) {
+			int qtdDias = Period.between(LocalDate.parse(txtDataLocacao.getText()),
+										 LocalDate.parse(txtDataDevolucao.getText())).getDays();	
+			
+			for(Carro c : veiculos) {
+				if (qtdDias == 0) {
+					aux += c.getValorDiaria();
+				}else {
+					aux += c.getValorDiaria() * qtdDias;	
+				}
+			}
+		}
+
+		txtTotal.setText( String.format("%.2f", aux) );
+	}
+	
+	private void verificarPermissaoEdicao() {
+		if(locacao.getStatus().equals(LocacaoStatus.CONCLUIDO)) {
+			txtDataDevolucao.setEnabled(false);
+			comboCliente.setEnabled(false);
+			comboAtendente.setEnabled(false);
+			comboVeiculo.setEnabled(false);
+			btnInserir.setEnabled(false);
+			btnRemover.setEnabled(false);
+			btnSalvarLocacao.setEnabled(false);
 		}
 	}
 }

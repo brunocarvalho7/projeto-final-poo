@@ -27,6 +27,12 @@ public abstract class Cliente extends Pessoa {
 		this.rsLocado = rsLocado;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return this.getIdPessoa() == ((Cliente)obj).getIdPessoa();
+	}
+
+	
 	public abstract int getMaxLocacoesSimultaneas();
 	
 	public abstract String serializarCliente();

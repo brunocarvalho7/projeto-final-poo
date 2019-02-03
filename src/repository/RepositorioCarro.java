@@ -70,6 +70,22 @@ public class RepositorioCarro implements IRepositorio<Carro>{
 	public Map<Integer, Carro> buscarTodos() {
 		return carros;
 	}
+	
+	public void alugarCarro(int idCarro) {
+		if(carros.containsKey(idCarro)) {
+			carros.get(idCarro).alugar();
+		}
+		
+		gravarDadosTxt();
+	}
+	
+	public void liberarCarro(int idCarro) {
+		if(carros.containsKey(idCarro)) {
+			carros.get(idCarro).devolver();
+		}
+		
+		gravarDadosTxt();
+	}
 
 	@Override
 	public boolean gravarDadosTxt() {

@@ -19,9 +19,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import enums.LocacaoStatus;
+import model.Carro;
 import model.ClientePessoaFisica;
 import model.ClientePessoaJuridica;
 import model.Locacao;
+import repository.RepositorioCarro;
 import repository.RepositorioLocacao;
 
 public class ViewLocacoes extends JFrame {
@@ -155,7 +157,7 @@ public class ViewLocacoes extends JFrame {
 			}
 		});
 		btnNovaLocacao.setFont(new Font("Arial Narrow", Font.PLAIN, 13));
-		btnNovaLocacao.setBounds(213, 267, 137, 23);
+		btnNovaLocacao.setBounds(184, 267, 137, 23);
 		getContentPane().add(btnNovaLocacao);
 		
 		JButton btnRemoverLocacao = new JButton("Remover loca\u00E7\u00E3o");
@@ -165,7 +167,7 @@ public class ViewLocacoes extends JFrame {
 			}
 		});
 		btnRemoverLocacao.setFont(new Font("Arial Narrow", Font.PLAIN, 13));
-		btnRemoverLocacao.setBounds(360, 267, 115, 23);
+		btnRemoverLocacao.setBounds(338, 267, 137, 23);
 		getContentPane().add(btnRemoverLocacao);
 		
 		JButton btnFinalizarLocao = new JButton("Finalizar Loca\u00E7\u00E3o");
@@ -174,6 +176,10 @@ public class ViewLocacoes extends JFrame {
 				Locacao l = getLocacaoSelecionado();
 				
 				if(l.getStatus().equals(LocacaoStatus.ABERTO)) {
+					for(Carro c : l.getVeiculos())
+						RepositorioCarro.getInstance().liberarCarro(c.getId());
+
+					
 					l.setStatus(LocacaoStatus.CONCLUIDO);
 					l.setDataDevolucao(LocalDate.now());
 					l.calcularValorLocacao();
