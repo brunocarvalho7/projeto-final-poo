@@ -2,4 +2,5 @@
 2|Modelo Ziraldo|kgakjga|ABC-1234|2013|true|true|true|true|1800.0|FURGÃO|false
 3|Modelo K|noagao|XYZ-1235|2019|false|true|true|false|1200.0|SW|false
 4|Modelo teste|515|5161|2015|false|false|false|true|2005.5|SW|false
-7|te|tw|LEH5151|2019|false|true|false|true|5000.1|VAN|false
+7|te|tw|LEH5151|2019|false|true|false|true|5000.1|VAN|true
+8|TESTE|TE|LWG5375|2015|false|false|false|true|200.0|HATCH|false
